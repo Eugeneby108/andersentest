@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['middleware' => ['web']], function() {
+    Route::resource('post','PostController');
+    Route::POST('addPost','PostController@addPost');
+  });
